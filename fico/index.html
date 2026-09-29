@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Rule Was the Moat</title>
+<meta name="description" content="Case study 01: how FICO lost more than half its value in two months, three scenarios for what comes next, and seven lessons for spotting a regulatory moat before it breaks.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Rule Was the Moat: a FICO case study">
+<meta property="og:description" content="FICO lost 55% in two months while revenue grew 26%. What happened, three scenarios for what comes next, and seven lessons.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Rule Was the Moat: a FICO case study">
+<meta name="twitter:description" content="FICO lost 55% in two months while revenue grew 26%. What happened, what comes next, and seven lessons.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column (~68ch) that widens for charts; ticker-board display type over a cool statement-paper ground. */
+:root{
+  --paper:#F2F4F6; --panel:#FFFFFF; --ink:#15202A; --muted:#5A6774; --rule:#D3D9DF;
+  --accent:#2447C9; --loss:#C3352C; --keep:#127A66; --band:#E6EAF2;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0D1319; --panel:#141C24; --ink:#E6EBF0; --muted:#95A2AF; --rule:#26313C;
+  --accent:#8AA4FF; --loss:#FF6F63; --keep:#43CCAA; --band:#1A2430; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0D1319; --panel:#141C24; --ink:#E6EBF0; --muted:#95A2AF; --rule:#26313C;
+  --accent:#8AA4FF; --loss:#FF6F63; --keep:#43CCAA; --band:#1A2430; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+.mast a.home{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+.mast a.home:hover{border-color:var(--ink)}
+.verdict{display:flex;flex-direction:column;gap:10px}
+.promise{color:var(--muted);font-size:15px!important}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--body);padding-inline:20px;padding-block:0 64px}
+.wrap{max-width:880px;margin:0 auto}
+.col{max-width:680px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.stack{display:flex;flex-direction:column;gap:18px}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* masthead */
+.mast{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-block:22px;border-bottom:1px solid var(--rule);font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mast b{color:var(--ink);font-weight:500}
+
+/* hero */
+.hero{padding-block:56px 40px;display:flex;flex-direction:column;gap:22px}
+.kicker{font:500 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--loss)}
+.hero h1{font:900 clamp(56px,11vw,112px)/.9 var(--display);text-transform:uppercase;letter-spacing:.005em}
+.hero h1 span{color:var(--loss)}
+.lede{font-size:clamp(18px,2.3vw,21px);line-height:1.55;max-width:620px}
+.ticker{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:10px}
+.tick{background:var(--panel);padding:16px 18px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.tick .v{font:800 40px/1 var(--display);font-variant-numeric:tabular-nums}
+.tick .v.loss{color:var(--loss)}
+.tick .l{font:400 13px/1.4 var(--body);color:var(--muted)}
+
+/* sections */
+section{padding-block:48px;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:22px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h2{font:800 clamp(34px,5.5vw,48px)/1 var(--display);text-transform:uppercase}
+h3{font:600 19px/1.3 var(--body)}
+.note{font-size:14px;color:var(--muted);line-height:1.5}
+
+/* chart shells */
+.fig{background:var(--panel);border:1px solid var(--rule);padding:20px 18px 14px;display:flex;flex-direction:column;gap:12px}
+.fig-h{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+.fig-h strong{font:600 15px/1.3 var(--body)}
+.fig-h span{font:400 12px/1.3 var(--mono);color:var(--muted)}
+.scroll{overflow-x:auto}
+svg text{font-family:var(--mono)}
+#price{min-width:600px;display:block}
+.ax{fill:var(--muted);font-size:11px}
+.grid{stroke:var(--rule);stroke-width:1}
+.ann{fill:var(--ink);font-size:12px;font-weight:500}
+.ann.l{fill:var(--loss)}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.tl li{display:grid;grid-template-columns:112px 1fr;gap:18px;padding-block:14px;border-bottom:1px dashed var(--rule)}
+.tl li:last-child{border-bottom:0}
+.tl time{font:500 13px/1.6 var(--mono);color:var(--muted)}
+.tl .d{min-width:0}
+.tl .d b{font-weight:600}
+.tl .hit{color:var(--loss);font:500 13px var(--mono);white-space:nowrap}
+
+/* bars */
+.bars{display:flex;flex-direction:column;gap:14px}
+.bar-row{display:grid;grid-template-columns:minmax(0,210px) 1fr;gap:14px;align-items:center}
+.bar-row .name{font-size:14px;line-height:1.3}
+.bar-row .name small{display:block;color:var(--muted);font:400 12px/1.35 var(--mono)}
+.track{position:relative;height:26px;display:flex;align-items:center;gap:8px}
+.lane{flex:1;height:100%;min-width:0;background:var(--band)}
+.fill{height:100%;background:var(--muted);min-width:3px}
+.amt{width:64px;text-align:right}
+.fill.fico{background:var(--accent)}
+.fill.vs{background:var(--keep)}
+.amt{font:500 14px var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.share{display:flex;align-items:flex-end;gap:28px;height:170px;padding-top:10px;border-bottom:1px solid var(--rule)}
+.col-b{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;height:100%;justify-content:flex-end}
+.col-b .blk{width:100%;max-width:90px;background:var(--keep)}
+.col-b .pct{font:800 28px/1 var(--display)}
+.share-l{display:flex;gap:28px}
+.share-l span{flex:1;text-align:center;font:400 12px/1.3 var(--mono);color:var(--muted)}
+
+.pe{position:relative;height:74px;margin-inline:8px}
+.pe .line{position:absolute;left:0;right:0;top:36px;height:2px;background:var(--rule)}
+.pe .dot{position:absolute;top:29px;width:16px;height:16px;border-radius:50%;transform:translateX(-50%);border:3px solid var(--panel)}
+.pe .lab{position:absolute;transform:translateX(-50%);font:500 12px/1.25 var(--mono);text-align:center;white-space:nowrap}
+.pe .lab.up{top:0}.pe .lab.dn{top:52px;color:var(--muted)}
+
+/* lessons */
+.lessons{list-style:none;margin:0;padding:0;counter-reset:l;display:flex;flex-direction:column}
+.lessons li{counter-increment:l;display:grid;grid-template-columns:64px 1fr;gap:18px;padding-block:22px;border-bottom:1px solid var(--rule)}
+.lessons li:last-child{border-bottom:0}
+.lessons li::before{content:counter(l,decimal-leading-zero);font:900 44px/1 var(--display);color:var(--accent)}
+.lessons .b{display:flex;flex-direction:column;gap:8px;min-width:0}
+.lessons .fico{font-size:15px;color:var(--muted);border-left:2px solid var(--loss);padding-left:12px}
+
+/* stress test table */
+.tbl{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+.tbl th{text-align:left;font:500 12px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px 12px;border-bottom:2px solid var(--ink)}
+.tbl td{padding:12px;border-bottom:1px solid var(--rule);vertical-align:top}
+.tbl td:first-child{font:500 13px var(--mono);color:var(--accent);width:40px}
+.flag{display:inline-block;font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border:1px solid currentColor;white-space:nowrap}
+.flag.red{color:var(--loss)}
+.flag.ok{color:var(--keep)}
+
+/* scenarios */
+#scen{min-width:600px;display:block}
+.split-bar{display:flex;height:44px;gap:2px}
+.seg{display:flex;align-items:center;padding-inline:12px;min-width:0;overflow:hidden;font:500 13px/1.2 var(--mono);white-space:nowrap}
+.seg.m{background:var(--accent);color:var(--panel)}
+.seg.o{background:var(--band);color:var(--ink)}
+.scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.scen > div{background:var(--panel);border:1px solid var(--rule);padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.scen .flag{align-self:flex-start}
+.flag.base{color:var(--accent)}
+.scen .range{font:800 38px/1 var(--display);font-variant-numeric:tabular-nums}
+.range.loss{color:var(--loss)}.range.acc{color:var(--accent)}.range.keep{color:var(--keep)}
+.scen .meta{font:400 13px/1.3 var(--mono);color:var(--muted)}
+.scen ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.5}
+.verdict{border:1px solid var(--ink);padding:18px 20px;max-width:760px}
+.verdict p{font-size:16px}
+
+.pull{font:800 clamp(28px,4.6vw,40px)/1.08 var(--display);text-transform:uppercase;max-width:760px}
+.pull span{color:var(--accent)}
+
+.apply{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.apply > div{background:var(--panel);border:1px solid var(--rule);padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.apply h3{font-size:17px}
+.apply p{font-size:15px}
+
+.sources{font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px;padding:0;margin:0;list-style:none}
+.sources li{min-width:0;overflow-wrap:anywhere}
+footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 var(--mono);color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media (max-width:560px){
+  body{font-size:16px}
+  .tl li{grid-template-columns:1fr;gap:4px}
+  .bar-row{grid-template-columns:1fr;gap:6px}
+  .lessons li{grid-template-columns:1fr;gap:6px}
+  .lessons li::before{font-size:34px}
+}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="mast"><span><a class="home" href="../">Case studies</a> · <b>No. 01</b></span><span>29 Sep 2026 · NYSE: FICO</span></div>
+
+  <header class="hero">
+    <div class="kicker">When a moat is written by a regulator</div>
+    <h1>The rule<br>was the <span>moat</span></h1>
+    <p class="lede">FICO lost more than half its value in two months. Its scores didn't get worse and its revenue kept growing. What changed was the rule that forced mortgage lenders to buy them. This is how that happened, what could come next, and the seven checks I now run so I don't get caught by the same pattern.</p>
+    <div class="ticker">
+      <div class="tick"><span class="v">$1,373</span><span class="l">Close, 29 Jul 2026</span></div>
+      <div class="tick"><span class="v loss">$617</span><span class="l">Close, 29 Sep 2026 (−26.6% on the day)</span></div>
+      <div class="tick"><span class="v loss">−55%</span><span class="l">In about two months</span></div>
+      <div class="tick"><span class="v">3</span><span class="l">Single-day drops of 15% or more</span></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="eyebrow">The fall</div>
+    <h2>Three hits, one story</h2>
+    <div class="fig">
+      <div class="fig-h"><strong>FICO daily close, USD</strong><span>29 Jul – 29 Sep 2026 · last point = 29 Sep close</span></div>
+      <div class="scroll"><svg id="price" viewBox="0 0 760 340" width="100%" role="img" aria-label="FICO share price fell from 1,373 dollars on July 29 to 617 dollars at the close on September 29, with sharp drops on July 30, September 4 and September 29."></svg></div>
+      <p class="note">Source: IBKR daily bars. 29 Sep close $616.80, intraday low $595.19.</p>
+    </div>
+    <ol class="tl">
+      <li><time>Oct 2025</time><div class="d"><b>FICO launches its Direct License Program.</b> Resellers can produce FICO scores without going through the credit bureaus. Classic scores drop to $4.95, plus $33 for every loan that closes.</div></li>
+      <li><time>22 Apr 2026</time><div class="d"><b>The regulator starts a pilot.</b> FHFA lets the 21 largest lenders deliver loans to Fannie Mae and Freddie Mac scored only with VantageScore 4.0, the bureaus' own score.</div></li>
+      <li><time>30 Jul 2026</time><div class="d"><b>Strong quarter, weak details.</b> Revenue grew 26%, but mortgage growth slowed, the licensing program had "no firm timeline", and VantageScore was "gaining some traction". <span class="hit">−17%</span></div></li>
+      <li><time>3–4 Sep 2026</time><div class="d"><b>VantageScore opened to every lender.</b> Fannie and Freddie must accept it from all approved lenders, not just the pilot group. <span class="hit">−17%</span></div></li>
+      <li><time>28 Sep 2026</time><div class="d"><b>One pricing grid.</b> The two agencies merge their loan-pricing tables so a VantageScore gets a borrower the same mortgage rate as a FICO score. No start date yet. <span class="hit">−26.6% on 29 Sep</span></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="eyebrow">The mechanism</div>
+    <h2>Why a $0.99 rival is a big deal</h2>
+    <div class="col stack">
+      <p>For years, loans sold to Fannie Mae and Freddie Mac had to carry a Classic FICO score. Lenders had no choice, so FICO could raise its mortgage price again and again. Reports on the latest quarter note that mortgage growth came from price, not from more loans.</p>
+      <p>Once one pricing table accepts either score, a lender who picks VantageScore gets the same result for a fraction of the cost. The chart below shows what that gap looks like on a single mortgage application.</p>
+    </div>
+    <div class="fig">
+      <div class="fig-h"><strong>Score cost for one borrower whose loan closes</strong><span>Illustration · 3 scores (one per bureau) · list prices</span></div>
+      <div class="bars" id="costbars"></div>
+      <p class="note">Traditional model: $10 per score. Performance model: $4.95 per score plus $33 per closed loan. FICO 10T: $0.99 per score plus $65 per closed loan. VantageScore 4.0: $0.99 per score, and TransUnion gives it away free through 2026. Resellers add their own fees on top.</p>
+    </div>
+    <div class="split">
+      <div class="fig">
+        <div class="fig-h"><strong>VantageScore share of TransUnion mortgage pulls</strong></div>
+        <div class="share">
+          <div class="col-b"><span class="pct">&lt;5%</span><div class="blk" style="height:6%"></div></div>
+          <div class="col-b"><span class="pct">~30%</span><div class="blk" style="height:60%"></div></div>
+        </div>
+        <div class="share-l"><span>Before the pilot</span><span>Q2 2026</span></div>
+        <p class="note">Some of these pulls are probably lenders taking both scores rather than switching. The direction is still clear.</p>
+      </div>
+      <div class="fig">
+        <div class="fig-h"><strong>What investors pay per $1 of earnings</strong></div>
+        <div class="pe">
+          <div class="line"></div>
+          <div class="lab up" style="left:83%">50x+</div><div class="dot" style="left:83%;background:var(--muted)"></div><div class="lab dn" style="left:83%">Peak years</div>
+          <div class="lab up" style="left:40%">~24x</div><div class="dot" style="left:40%;background:var(--accent)"></div><div class="lab dn" style="left:40%">Mar 2026</div>
+          <div class="lab up" style="left:25%;color:var(--loss)">~15x</div><div class="dot" style="left:25%;background:var(--loss)"></div><div class="lab dn" style="left:25%">Now</div>
+        </div>
+        <p class="note">Scale runs 0x to 60x. "Now" is the $617 close against FICO's FY26 guidance of $42.43 non-GAAP earnings per share. When a premium multiple meets a threat to pricing power, both the earnings and the multiple fall together.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="next">
+    <div class="eyebrow">What happens next</div>
+    <h2>Three futures for FICO</h2>
+    <div class="col stack">
+      <p>Almost everything depends on one line of the income statement. Last quarter, mortgage origination scores brought in $283M, 71% of score sales to lenders and about 42% of all revenue. They cost almost nothing to produce, so they carry most of the profit.</p>
+    </div>
+    <div class="fig">
+      <div class="fig-h"><strong>Where FICO's earnings per share come from</strong><span>Estimate · Q3 FY26 run-rate, annualised</span></div>
+      <div class="split-bar" role="img" aria-label="About 36 dollars of roughly 48 dollars in annual earnings per share comes from mortgage origination scores; about 12 dollars from everything else.">
+        <div class="seg m" style="flex:36"><span>Mortgage scores ≈ $36</span></div>
+        <div class="seg o" style="flex:12"><span>Rest ≈ $12</span></div>
+      </div>
+      <p class="note">My own estimate, not company guidance. It assumes mortgage scores earn about a 90% margin, and applies the company's 62% non-GAAP operating margin, $5.6B of debt at 5.64% interest, and a ~24% tax rate. The rest covers auto, card and consumer scores plus software.</p>
+    </div>
+
+    <div class="fig">
+      <div class="fig-h"><strong>Rough share price in 2–3 years, by scenario</strong><span>USD per share · ranges, not targets</span></div>
+      <div class="scroll"><svg id="scen" viewBox="0 0 760 190" width="100%" role="img" aria-label="Worst case 250 to 300 dollars, base case 500 to 600 dollars, best case 900 to 1,000 dollars. 29 September close 617 dollars. Probability-weighted value about 575 dollars."></svg></div>
+    </div>
+
+    <div class="scen">
+      <div>
+        <span class="flag red">Worst · 25%</span>
+        <div class="range loss">$250–300</div>
+        <div class="meta">~$18 EPS × ~14x</div>
+        <ul>
+          <li>Lenders shop for whichever score gets the cheapest loan pricing, and FICO keeps only ~35% of the volume Fannie and Freddie buy.</li>
+          <li>The bureaus bundle VantageScore free, so FICO cuts its price per loan by ~70% to stay in.</li>
+          <li>Debt of 3.7x a year's operating profit leaves no room for buybacks. Other agencies follow FHFA.</li>
+        </ul>
+      </div>
+      <div>
+        <span class="flag base">Base · 50%</span>
+        <div class="range acc">$500–600</div>
+        <div class="meta">~$27 EPS × ~20x</div>
+        <ul>
+          <li>A slow loss of share: FICO keeps ~60% of that volume.</li>
+          <li>FICO accepts a price per loan ~45% lower to get its newer 10T score approved.</li>
+          <li>It stays the leader, but mortgage becomes a normal business. The stock trades like a quality company, not a 50x one.</li>
+        </ul>
+      </div>
+      <div>
+        <span class="flag ok">Best · 25%</span>
+        <div class="range keep">$900–1,000</div>
+        <div class="meta">~$39 EPS × ~25x</div>
+        <ul>
+          <li>Bond investors keep paying more for FICO-scored loans, so lenders keep pulling FICO and it keeps ~80% of that volume.</li>
+          <li>FHFA's own finding that VantageScore rates borrowers ~20 points too high slows the new grid. 10T is approved at a fair price.</li>
+          <li>Rate cuts lift mortgage volume. Platform software (+62% recurring revenue) becomes a second engine. A future regulator could even reverse the rule.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col stack">
+      <h3>What will tell us which path FICO is on</h3>
+    </div>
+    <ol class="tl">
+      <li><time>Early Nov 2026</time><div class="d"><b>FY Q4 earnings and FY27 guidance.</b> The mortgage revenue guide is the single most useful number.</div></li>
+      <li><time>Any time</time><div class="d"><b>FICO 10T cleared for Fannie and Freddie, and at what price.</b> Approval at a price close to today's points toward the best case. A deep cut points toward base.</div></li>
+      <li><time>Any time</time><div class="d"><b>A start date for the single pricing grid,</b> and whether lenders may use two bureau reports instead of three.</div></li>
+      <li><time>Quarterly</time><div class="d"><b>VantageScore share at Equifax and Experian,</b> not only TransUnion. A rise at all three signals the worst case.</div></li>
+    </ol>
+
+    <div class="verdict">
+      <p><b>My read.</b> Weighting the three cases 25 / 50 / 25 gives about $575, a little below its $617 close on 29 Sep. The market isn't obviously wrong, and there is no margin of safety yet. FICO also fails every check in the stress test below, so I'm watching, not buying, until the November guidance.</p>
+      <p class="promise"><b>Scorecard.</b> I don't own FICO. After the FY Q4 report in early November I'll come back to this page and score these scenarios against what actually happened.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Takeaways</div>
+    <h2>Seven lessons I keep</h2>
+    <ol class="lessons">
+      <li><div class="b"><h3>Ask who grants the moat.</h3><p>A moat that comes from a rule can be taken away by a rule. Before paying up, ask: if the rule disappeared tomorrow, would customers still choose this product?</p><p class="fico">FICO passes in credit cards and auto loans, where lenders choose it freely. It fails in mortgages, where a rule did the choosing.</p></div></li>
+      <li><div class="b"><h3>Growth from price has a political ceiling.</h3><p>Check how much growth comes from raising prices versus selling more. If those price increases land on a bill voters already complain about, expect someone in government to notice.</p><p class="fico">Mortgage score prices rose sharply during a national argument about housing affordability. The regulator then named FICO's pricing as the problem.</p></div></li>
+      <li><div class="b"><h3>Watch when your distributor owns your rival.</h3><p>If the companies that sell your product also own a competing one, they can switch their effort the moment the rules allow it.</p><p class="fico">The three credit bureaus sold FICO scores and co-own VantageScore. TransUnion made VantageScore free, and its share of their mortgage pulls went from under 5% to about 30%.</p></div></li>
+      <li><div class="b"><h3>A premium multiple doubles the fall.</h3><p>At 40–50x earnings, a stock is priced for years of unchallenged pricing power. When that is questioned, earnings estimates and the multiple drop at the same time.</p><p class="fico">The multiple went from 50x+ to about 15x while revenue was still growing 26%.</p></div></li>
+      <li><div class="b"><h3>Cheap versus its own history is not a floor.</h3><p>Historical multiples describe the old business. Once the business model changes, "lowest in ten years" says little about where the bottom is.</p><p class="fico">In March 2026, 24x was called a 10-year low, with an average target near $2,068 and the stock around $1,100. It has since fallen about another 40%.</p></div></li>
+      <li><div class="b"><h3>A thesis-breaking gap means exit, not add.</h3><p>A big one-day drop caused by the market is noise. A big drop caused by news that breaks the thesis is information. Reduce or exit, and buy back only on new evidence.</p><p class="fico">Each −17% day was the regulator taking another step in the same direction. Averaging down turned each step into a bigger loss.</p></div></li>
+      <li><div class="b"><h3>Debt-funded buybacks at the top turn a setback into a squeeze.</h3><p>A company that borrows to buy back its own stock at a premium price is betting that nothing changes. If the business then weakens, the debt stays while the shares it bought are worth half.</p><p class="fico">In the June quarter FICO spent $1.96B buying its own stock at an average $1,149, partly with a new $1.5B loan. Debt is now $5.6B, about 3.7x a year of operating profit, with the stock at $617.</p></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="eyebrow">The check</div>
+    <h2>Moat stress test</h2>
+    <p class="col">Run this before adding any "wide moat" name, and again when a position gaps down 15% or more on company news.</p>
+    <div class="scroll">
+      <table class="tbl">
+        <thead><tr><th>#</th><th>Question</th><th>FICO, mortgage</th></tr></thead>
+        <tbody>
+          <tr><td>01</td><td>Would customers still choose it if no rule required it?</td><td><span class="flag red">No</span></td></tr>
+          <tr><td>02</td><td>Is most recent growth from price rather than volume, on a politically visible bill?</td><td><span class="flag red">Yes</span></td></tr>
+          <tr><td>03</td><td>Does a distributor or partner own a competing product?</td><td><span class="flag red">Yes</span></td></tr>
+          <tr><td>04</td><td>Is the multiple well above the market (35x+)?</td><td><span class="flag red">Yes</span></td></tr>
+          <tr><td>05</td><td>Has a regulator or politician named the company's pricing in public?</td><td><span class="flag red">Yes</span></td></tr>
+          <tr><td>06</td><td>Is there a written exit rule for a thesis-breaking gap?</td><td><span class="flag red">Rarely</span></td></tr>
+          <tr><td>07</td><td>Is management borrowing to buy back stock at a premium multiple?</td><td><span class="flag red">Yes</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Two or more red answers: size smaller, write the exit rule before buying, and track the regulator's calendar as closely as the earnings calendar.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Beyond FICO</div>
+    <h2>Where this pattern could show up</h2>
+    <div class="apply">
+      <div><h3>Payment networks (MA, V)</h3><p>The moat is mostly the network itself, which passes check 01. But card fees are a political target, so checks 02 and 05 deserve a look before paying up for them.</p><p><span class="flag ok">Mostly passes</span></p></div>
+      <div><h3>AI power producers</h3><p>Rising electricity bills tied to data-center demand are becoming a political issue, and grid operators have capped capacity-auction prices before. That is check 02: growth from price on a bill voters see.</p><p><span class="flag red">Watch closely</span></p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="pull">The best moats survive a rule change. <span>Own the ones customers would choose anyway.</span></p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Sources</div>
+    <ul class="sources">
+      <li>Price data: Interactive Brokers daily bars, Apr–Sep 2026.</li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/fico-stock-tumbles-us-moves-212713252.html">FICO stock tumbles as US moves to break mortgage scoring monopoly (Yahoo Finance)</a></li>
+      <li><a href="https://wrenews.com/fannie-freddie-single-pricing-grid-vantagescore-fico-2026/">Fannie, Freddie move to one pricing grid with VantageScore (WRE News)</a></li>
+      <li><a href="https://www.credittechnologies.com/post/fhfa-opens-vantagescore-4-0-all-lenders-what-changed-september-3">FHFA opens VantageScore 4.0 to all lenders (Credit Technologies)</a></li>
+      <li><a href="https://www.housingwire.com/articles/fhfa-vantagescore-pilot-gses-hud/">FHFA launches VantageScore 4.0 pilot (HousingWire)</a></li>
+      <li><a href="https://www.tikr.com/blog/fair-isaac-stock-plunges-mixed-q3-results-2026">Fair Isaac plunges 17% after mixed quarterly results (TIKR)</a></li>
+      <li><a href="https://nationalmortgageprofessional.com/news/credit-score-battle-picks-speed-fico-vantagescore-gains">Credit score battle picks up speed (National Mortgage Professional)</a></li>
+      <li><a href="https://www.ficoscore.com/mortgagedirectlicense">FICO Mortgage Direct License Program (FICO)</a></li>
+      <li><a href="https://www.investing.com/analysis/fair-isaac-stock-drop-brings-valuation-near-10-year-lows-200676864">Fair Isaac stock drop brings valuation near 10-year lows (Investing.com, Mar 2026)</a></li>
+      <li><a href="https://www.investing.com/news/stock-market-news/fico-stock-drops-20-analysts-break-down-the-impact-of-fhfas-single-pricing-grid-4922853">FICO stock drops 20%: analysts on the single pricing grid (Investing.com)</a></li>
+      <li><a href="https://www.investing.com/news/company-news/fico-q3-fy2026-slides-platform-arr-milestone-mortgage-growth-surge-93CH-4821998">FICO Q3 FY2026 slides: mortgage growth surge (Investing.com)</a></li>
+      <li><a href="https://www.fool.com/earnings/call-transcripts/2026/08/07/fico-fico-q3-2026-earnings-call-transcript/">FICO Q3 2026 earnings call transcript (Motley Fool)</a></li>
+      <li><a href="https://www.top1markets.com/news/fico-stock-vantagescore-regulation-risk-update">FICO stock is down 58% from its high (TOPONE Markets)</a></li>
+    </ul>
+  </section>
+
+  <footer><span>Case study 01 · Written 29 Sep 2026</span><span>For learning, not investment advice. I hold no FICO shares.</span></footer>
+</div>
+
+<script>
+(function(){
+  const closes=[1373.08,1139.54,1122.97,1045.46,1046.99,1091.55,1031.89,1041.4,1049.74,1038.23,1044.21,1110.7,1085.78,1064.41,1078.12,1161.59,1149.75,1172.67,1166.4,1137.14,1133.7,1157.06,1153.57,1147.21,1103.68,1099.45,1118.93,932.26,933.3,983.19,960.67,985.39,1001.5,985.96,991.35,966.3,949.68,924.52,914.48,879.62,856.48,863.09,840.89];
+  const pre=616.8;
+  const svg=document.getElementById('price');
+  const W=760,H=340,L=52,R=24,T=20,B=34;
+  const n=closes.length; // last real index n-1, pre-market at n
+  const x=i=>L+(i/n)*(W-L-R);
+  const y0=560,y1=1450;
+  const y=v=>T+(1-(v-y0)/(y1-y0))*(H-T-B);
+  const ns='http://www.w3.org/2000/svg';
+  const css={fill:1,stroke:1,'stroke-width':1,'stroke-dasharray':1,'stroke-linejoin':1};
+  const el=(t,a,txt)=>{const e=document.createElementNS(ns,t);let st='';for(const k in a){if(css[k])st+=k+':'+a[k]+';';else e.setAttribute(k,a[k]);}if(st)e.setAttribute('style',st);if(txt!=null)e.textContent=txt;svg.appendChild(e);return e;};
+  [700,900,1100,1300].forEach(v=>{
+    el('line',{x1:L,x2:W-R,y1:y(v),y2:y(v),class:'grid'});
+    el('text',{x:L-8,y:y(v)+4,'text-anchor':'end',class:'ax'},'$'+v.toLocaleString('en-US'));
+  });
+  [[0,'Jul 29'],[13,'Aug 17'],[24,'Sep 1'],[n,'Sep 29']].forEach(([i,t])=>{
+    el('text',{x:x(i),y:H-10,'text-anchor':i===n?'end':(i===0?'start':'middle'),class:'ax'},t);
+  });
+  // area under line
+  let d='M'+x(0)+','+y(closes[0]);
+  closes.forEach((v,i)=>{if(i)d+=' L'+x(i).toFixed(1)+','+y(v).toFixed(1);});
+  const area=d+' L'+x(n)+','+y(pre)+' L'+x(n)+','+(H-B)+' L'+x(0)+','+(H-B)+' Z';
+  el('path',{d:area,fill:'var(--band)',stroke:'none'});
+  el('path',{d:d,fill:'none',stroke:'var(--ink)','stroke-width':2,'stroke-linejoin':'round'});
+  el('line',{x1:x(n-1),y1:y(closes[n-1]),x2:x(n),y2:y(pre),stroke:'var(--ink)','stroke-width':2});
+  // markers
+  const mark=(i,v,c)=>el('circle',{cx:x(i),cy:y(v),r:5,fill:c,stroke:'var(--panel)','stroke-width':2});
+  mark(0,closes[0],'var(--ink)');
+  mark(1,closes[1],'var(--loss)');
+  mark(27,closes[27],'var(--loss)');
+  mark(n,pre,'var(--loss)');
+  // annotations
+  el('text',{x:x(0)+10,y:y(closes[0])+4,class:'ann'},'$1,373');
+  el('text',{x:x(1)+12,y:y(1320),class:'ann l'},'30 Jul · earnings −17%');
+  el('line',{x1:x(1)+6,y1:y(1300),x2:x(1)+2,y2:y(closes[1])-8,stroke:'var(--loss)','stroke-width':1});
+  el('text',{x:x(27)-10,y:y(860),'text-anchor':'end',class:'ann l'},'4 Sep · VantageScore opened −17%');
+  el('line',{x1:x(27)-4,y1:y(885),x2:x(27)-1,y2:y(closes[27])+8,stroke:'var(--loss)','stroke-width':1});
+  el('text',{x:x(n)-10,y:y(pre)+4,'text-anchor':'end',class:'ann l'},'29 Sep close $617 −27%');
+})();
+(function(){
+  const rows=[
+    {n:'VantageScore 4.0',s:'3 × $0.99',v:2.97,c:'vs'},
+    {n:'FICO Classic, traditional',s:'3 × $10',v:30,c:'fico'},
+    {n:'FICO Classic, performance',s:'3 × $4.95 + $33',v:47.85,c:'fico'},
+    {n:'FICO 10T',s:'3 × $0.99 + $65',v:67.97,c:'fico'}
+  ];
+  const max=70, box=document.getElementById('costbars');
+  rows.forEach(r=>{
+    const row=document.createElement('div');row.className='bar-row';
+    row.innerHTML='<div class="name">'+r.n+'<small>'+r.s+'</small></div><div class="track"><div class="lane"><div class="fill '+r.c+'" style="width:'+(r.v/max*100).toFixed(1)+'%"></div></div><span class="amt">$'+r.v.toFixed(2)+'</span></div>';
+    box.appendChild(row);
+  });
+})();
+(function(){
+  const svg=document.getElementById('scen');
+  const ns='http://www.w3.org/2000/svg';
+  const css={fill:1,stroke:1,'stroke-width':1,'stroke-dasharray':1};
+  const el=(t,a,txt)=>{const e=document.createElementNS(ns,t);let st='';for(const k in a){if(css[k])st+=k+':'+a[k]+';';else e.setAttribute(k,a[k]);}if(st)e.setAttribute('style',st);if(txt!=null)e.textContent=txt;svg.appendChild(e);return e;};
+  const x=v=>40+(v/1100)*700;
+  // axis
+  el('line',{x1:x(0),x2:x(1100),y1:150,y2:150,stroke:'var(--rule)','stroke-width':1});
+  [0,250,500,750,1000].forEach(v=>{
+    el('line',{x1:x(v),x2:x(v),y1:146,y2:154,stroke:'var(--muted)','stroke-width':1});
+    el('text',{x:x(v),y:172,'text-anchor':'middle',class:'ax'},'$'+v.toLocaleString('en-US'));
+  });
+  // bands
+  [[250,300,'var(--loss)','Worst $250–300'],[500,600,'var(--accent)','Base $500–600'],[900,1000,'var(--keep)','Best $900–1,000']].forEach(([a,b,c,t])=>{
+    el('rect',{x:x(a),y:74,width:x(b)-x(a),height:30,fill:c});
+    const base=a===500; el('text',{x:base?x(617)-8:(x(a)+x(b))/2,y:64,'text-anchor':base?'end':'middle',class:'ann'},t);
+  });
+  // today marker
+  el('line',{x1:x(617),x2:x(617),y1:28,y2:150,stroke:'var(--ink)','stroke-width':2});
+  el('text',{x:x(617)+6,y:24,class:'ann'},'29 Sep close $617');
+  // weighted marker
+  el('line',{x1:x(575),x2:x(575),y1:108,y2:150,stroke:'var(--muted)','stroke-width':1.5,'stroke-dasharray':'4 3'});
+  el('text',{x:x(575)-6,y:130,'text-anchor':'end',class:'ax'},'Weighted ≈ $575');
+})();
+</script>
+
+</body>
+</html>
