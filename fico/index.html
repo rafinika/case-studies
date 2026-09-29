@@ -182,10 +182,10 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
   <header class="hero">
     <div class="kicker">When a moat is written by a regulator</div>
     <h1>The rule<br>was the <span>moat</span></h1>
-    <p class="lede">FICO lost more than half its value in two months. Its scores didn't get worse and its revenue kept growing. What changed was the rule that forced mortgage lenders to buy them. This is how that happened, what could come next, and the seven checks I now run so I don't get caught by the same pattern.</p>
+    <p class="lede">FICO lost more than half its value in two months. Its scores didn't get worse and its revenue kept growing. What changed was the rule that forced lenders selling loans to Fannie Mae and Freddie Mac to buy them. This is how that happened, what could come next, and the seven checks I now run so I don't get caught by the same pattern.</p>
     <div class="ticker">
       <div class="tick"><span class="v">$1,373</span><span class="l">Close, 29 Jul 2026</span></div>
-      <div class="tick"><span class="v loss">$617</span><span class="l">Close, 29 Sep 2026 (−26.6% on the day)</span></div>
+      <div class="tick"><span class="v loss">$618</span><span class="l">Close, 29 Sep 2026 (−26.5% on the day)</span></div>
       <div class="tick"><span class="v loss">−55%</span><span class="l">In about two months</span></div>
       <div class="tick"><span class="v">3</span><span class="l">Single-day drops of 15% or more</span></div>
     </div>
@@ -196,15 +196,15 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
     <h2>Three hits, one story</h2>
     <div class="fig">
       <div class="fig-h"><strong>FICO daily close, USD</strong><span>29 Jul – 29 Sep 2026 · last point = 29 Sep close</span></div>
-      <div class="scroll"><svg id="price" viewBox="0 0 760 340" width="100%" role="img" aria-label="FICO share price fell from 1,373 dollars on July 29 to 617 dollars at the close on September 29, with sharp drops on July 30, September 4 and September 29."></svg></div>
-      <p class="note">Source: IBKR daily bars. 29 Sep close $616.80, intraday low $595.19.</p>
+      <div class="scroll"><svg id="price" viewBox="0 0 760 340" width="100%" role="img" aria-label="FICO share price fell from 1,373 dollars on July 29 to 618 dollars at the close on September 29, with sharp drops on July 30, September 4 and September 29."></svg></div>
+      <p class="note">Source: IBKR daily bars. 29 Sep close $617.87, intraday low $595.19.</p>
     </div>
     <ol class="tl">
-      <li><time>Oct 2025</time><div class="d"><b>FICO launches its Direct License Program.</b> Resellers can produce FICO scores without going through the credit bureaus. Classic scores drop to $4.95, plus $33 for every loan that closes.</div></li>
+      <li><time>Oct 2025</time><div class="d"><b>FICO announces its Mortgage Direct License Program.</b> It would let resellers deliver FICO scores without going through the credit bureaus. Classic scores would cost $4.95 each, plus a $33 fee "per borrower per score" when the loan closes. As of late July 2026 it was still waiting on certification from Fannie or Freddie to go live.</div></li>
       <li><time>22 Apr 2026</time><div class="d"><b>The regulator starts a pilot.</b> FHFA lets the 21 largest lenders deliver loans to Fannie Mae and Freddie Mac scored only with VantageScore 4.0, the bureaus' own score.</div></li>
-      <li><time>30 Jul 2026</time><div class="d"><b>Strong quarter, weak details.</b> Revenue grew 26%, but mortgage growth slowed, the licensing program had "no firm timeline", and VantageScore was "gaining some traction". <span class="hit">−17%</span></div></li>
+      <li><time>29–30 Jul 2026</time><div class="d"><b>Strong quarter, weak details.</b> Results came out after the close on 29 Jul. Revenue grew 26%, but mortgage volumes grew only in the low single digits, management said it was "literally waiting on certification" before the licensing program could go live, and TIKR described VantageScore as "gaining some traction". <span class="hit">−17%</span></div></li>
       <li><time>3–4 Sep 2026</time><div class="d"><b>VantageScore opened to every lender.</b> Fannie and Freddie must accept it from all approved lenders, not just the pilot group. <span class="hit">−17%</span></div></li>
-      <li><time>28 Sep 2026</time><div class="d"><b>One pricing grid.</b> The two agencies merge their loan-pricing tables so a VantageScore gets a borrower the same mortgage rate as a FICO score. No start date yet. <span class="hit">−26.6% on 29 Sep</span></div></li>
+      <li><time>28 Sep 2026</time><div class="d"><b>One pricing grid.</b> FHFA says Fannie and Freddie will merge their loan-pricing tables into one grid that includes VantageScore alongside Classic FICO. No start date or new pricing table published yet. <span class="hit">−26.5% on 29 Sep</span></div></li>
     </ol>
   </section>
 
@@ -213,32 +213,32 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
     <h2>Why a $0.99 rival is a big deal</h2>
     <div class="col stack">
       <p>For years, loans sold to Fannie Mae and Freddie Mac had to carry a Classic FICO score. Lenders had no choice, so FICO could raise its mortgage price again and again. Reports on the latest quarter note that mortgage growth came from price, not from more loans.</p>
-      <p>Once one pricing table accepts either score, a lender who picks VantageScore gets the same result for a fraction of the cost. The chart below shows what that gap looks like on a single mortgage application.</p>
+      <p>If one pricing table treats both scores alike, a lender who picks VantageScore gets the same loan pricing for a fraction of the score cost. The chart below shows what that gap looks like on a single mortgage application.</p>
     </div>
     <div class="fig">
-      <div class="fig-h"><strong>Score cost for one borrower whose loan closes</strong><span>Illustration · 3 scores (one per bureau) · list prices</span></div>
+      <div class="fig-h"><strong>Score cost for one borrower whose loan closes</strong><span>Illustration · 3 scores (one per bureau) · list prices · closing fee counted once</span></div>
       <div class="bars" id="costbars"></div>
-      <p class="note">Traditional model: $10 per score. Performance model: $4.95 per score plus $33 per closed loan. FICO 10T: $0.99 per score plus $65 per closed loan. VantageScore 4.0: $0.99 per score, and TransUnion gives it away free through 2026. Resellers add their own fees on top.</p>
+      <p class="note">Traditional model: $10 per score. Performance model: $4.95 per score plus a closing fee FICO describes as $33 "per borrower per score". FICO 10T: $0.99 per score plus a $65 closing fee. This chart counts each closing fee once; if it applies to all three scores, the performance model is $113.85 and 10T is $197.97. VantageScore 4.0: $0.99 per score, and TransUnion includes it at no extra charge through 2026 for mortgage customers who also buy a FICO score. Resellers add their own fees on top. FICO's direct-license prices were not yet live as of July 2026.</p>
     </div>
     <div class="split">
       <div class="fig">
-        <div class="fig-h"><strong>VantageScore share of TransUnion mortgage pulls</strong></div>
+        <div class="fig-h"><strong>TransUnion mortgage pulls that include VantageScore</strong></div>
         <div class="share">
           <div class="col-b"><span class="pct">&lt;5%</span><div class="blk" style="height:6%"></div></div>
           <div class="col-b"><span class="pct">~30%</span><div class="blk" style="height:60%"></div></div>
         </div>
-        <div class="share-l"><span>Before the pilot</span><span>Q2 2026</span></div>
-        <p class="note">Some of these pulls are probably lenders taking both scores rather than switching. The direction is still clear.</p>
+        <div class="share-l"><span>Start of 2026</span><span>Q2 2026</span></div>
+        <p class="note">These are pulls that include VantageScore, not loans underwritten with it. TransUnion bundles it free with a FICO purchase, so many are likely lenders taking both scores. The direction is still clear.</p>
       </div>
       <div class="fig">
         <div class="fig-h"><strong>What investors pay per $1 of earnings</strong></div>
         <div class="pe">
           <div class="line"></div>
-          <div class="lab up" style="left:83%">50x+</div><div class="dot" style="left:83%;background:var(--muted)"></div><div class="lab dn" style="left:83%">Peak years</div>
+          <div class="lab up" style="left:83%">50x+</div><div class="dot" style="left:83%;background:var(--muted)"></div><div class="lab dn" style="left:83%">2023–25</div>
           <div class="lab up" style="left:40%">~24x</div><div class="dot" style="left:40%;background:var(--accent)"></div><div class="lab dn" style="left:40%">Mar 2026</div>
           <div class="lab up" style="left:25%;color:var(--loss)">~15x</div><div class="dot" style="left:25%;background:var(--loss)"></div><div class="lab dn" style="left:25%">Now</div>
         </div>
-        <p class="note">Scale runs 0x to 60x. "Now" is the $617 close against FICO's FY26 guidance of $42.43 non-GAAP earnings per share. When a premium multiple meets a threat to pricing power, both the earnings and the multiple fall together.</p>
+        <p class="note">Scale runs 0x to 60x. "2023–25" is trailing GAAP P/E, which ran above 50x each year and hit 93x in Sep 2024 (FullRatio). "Mar 2026" is the forward multiple cited by Investing.com. "Now" is the $617.87 close against FICO's FY26 guidance of $42.43 non-GAAP EPS; on the $36.86 GAAP guidance it is about 17x. On 29 Jul, before the fall, the same measure was about 32x. When a premium multiple meets a threat to pricing power, both the earnings and the multiple fall together.</p>
       </div>
     </div>
   </section>
@@ -255,12 +255,12 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
         <div class="seg m" style="flex:36"><span>Mortgage scores ≈ $36</span></div>
         <div class="seg o" style="flex:12"><span>Rest ≈ $12</span></div>
       </div>
-      <p class="note">My own estimate, not company guidance. It assumes mortgage scores earn about a 90% margin, and applies the company's 62% non-GAAP operating margin, $5.6B of debt at 5.64% interest, and a ~24% tax rate. The rest covers auto, card and consumer scores plus software.</p>
+      <p class="note">My own estimate, not company guidance. It assumes mortgage scores earn about a 90% margin, and applies the company's 62% non-GAAP operating margin, $5.6B of debt at 5.64% interest, and a ~24% tax rate, and charges all interest expense to the rest of the business. Sharing interest in proportion to operating profit instead would give roughly $30 from mortgage scores and $19 from the rest. The rest covers auto, card and consumer scores plus software.</p>
     </div>
 
     <div class="fig">
       <div class="fig-h"><strong>Rough share price in 2–3 years, by scenario</strong><span>USD per share · ranges, not targets</span></div>
-      <div class="scroll"><svg id="scen" viewBox="0 0 760 190" width="100%" role="img" aria-label="Worst case 250 to 300 dollars, base case 500 to 600 dollars, best case 900 to 1,000 dollars. 29 September close 617 dollars. Probability-weighted value about 575 dollars."></svg></div>
+      <div class="scroll"><svg id="scen" viewBox="0 0 760 190" width="100%" role="img" aria-label="Worst case 250 to 300 dollars, base case 500 to 600 dollars, best case 900 to 1,000 dollars. 29 September close 618 dollars. Probability-weighted value about 577 dollars."></svg></div>
     </div>
 
     <div class="scen">
@@ -271,7 +271,7 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
         <ul>
           <li>Lenders shop for whichever score gets the cheapest loan pricing, and FICO keeps only ~35% of the volume Fannie and Freddie buy.</li>
           <li>The bureaus bundle VantageScore free, so FICO cuts its price per loan by ~70% to stay in.</li>
-          <li>Debt of 3.7x a year's operating profit leaves no room for buybacks. Other agencies follow FHFA.</li>
+          <li>Net debt of 3.7x EBITDA leaves no room for buybacks. Other agencies follow FHFA.</li>
         </ul>
       </div>
       <div>
@@ -289,8 +289,8 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
         <div class="range keep">$900–1,000</div>
         <div class="meta">~$39 EPS × ~25x</div>
         <ul>
-          <li>Bond investors keep paying more for FICO-scored loans, so lenders keep pulling FICO and it keeps ~80% of that volume.</li>
-          <li>FHFA's own finding that VantageScore rates borrowers ~20 points too high slows the new grid. 10T is approved at a fair price.</li>
+          <li>Mortgage-bond investors keep wanting a FICO score on every loan, so lenders keep pulling FICO and it keeps ~80% of that volume.</li>
+          <li>FHFA's own mid-September pricing grids, which TD Cowen reads as showing VantageScore overstates credit quality by about 20 points versus FICO, slow the new grid. 10T is approved at a fair price.</li>
           <li>Rate cuts lift mortgage volume. Platform software (+62% recurring revenue) becomes a second engine. A future regulator could even reverse the rule.</li>
         </ul>
       </div>
@@ -307,7 +307,7 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
     </ol>
 
     <div class="verdict">
-      <p><b>My read.</b> Weighting the three cases 25 / 50 / 25 gives about $575, a little below its $617 close on 29 Sep. The market isn't obviously wrong, and there is no margin of safety yet. FICO also fails every check in the stress test below, so I'm watching, not buying, until the November guidance.</p>
+      <p><b>My read.</b> Weighting the three cases 25 / 50 / 25 (EPS × multiple in each) gives about $577, a little below its $617.87 close on 29 Sep. The market isn't obviously wrong, and there is no margin of safety yet. FICO also shows red on five of the six company checks in the stress test below, so I'm watching, not buying, until the November guidance.</p>
       <p class="promise"><b>Scorecard.</b> I don't own FICO. After the FY Q4 report in early November I'll come back to this page and score these scenarios against what actually happened.</p>
     </div>
   </section>
@@ -316,13 +316,13 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
     <div class="eyebrow">Takeaways</div>
     <h2>Seven lessons I keep</h2>
     <ol class="lessons">
-      <li><div class="b"><h3>Ask who grants the moat.</h3><p>A moat that comes from a rule can be taken away by a rule. Before paying up, ask: if the rule disappeared tomorrow, would customers still choose this product?</p><p class="fico">FICO passes in credit cards and auto loans, where lenders choose it freely. It fails in mortgages, where a rule did the choosing.</p></div></li>
-      <li><div class="b"><h3>Growth from price has a political ceiling.</h3><p>Check how much growth comes from raising prices versus selling more. If those price increases land on a bill voters already complain about, expect someone in government to notice.</p><p class="fico">Mortgage score prices rose sharply during a national argument about housing affordability. The regulator then named FICO's pricing as the problem.</p></div></li>
-      <li><div class="b"><h3>Watch when your distributor owns your rival.</h3><p>If the companies that sell your product also own a competing one, they can switch their effort the moment the rules allow it.</p><p class="fico">The three credit bureaus sold FICO scores and co-own VantageScore. TransUnion made VantageScore free, and its share of their mortgage pulls went from under 5% to about 30%.</p></div></li>
-      <li><div class="b"><h3>A premium multiple doubles the fall.</h3><p>At 40–50x earnings, a stock is priced for years of unchallenged pricing power. When that is questioned, earnings estimates and the multiple drop at the same time.</p><p class="fico">The multiple went from 50x+ to about 15x while revenue was still growing 26%.</p></div></li>
-      <li><div class="b"><h3>Cheap versus its own history is not a floor.</h3><p>Historical multiples describe the old business. Once the business model changes, "lowest in ten years" says little about where the bottom is.</p><p class="fico">In March 2026, 24x was called a 10-year low, with an average target near $2,068 and the stock around $1,100. It has since fallen about another 40%.</p></div></li>
-      <li><div class="b"><h3>A thesis-breaking gap means exit, not add.</h3><p>A big one-day drop caused by the market is noise. A big drop caused by news that breaks the thesis is information. Reduce or exit, and buy back only on new evidence.</p><p class="fico">Each −17% day was the regulator taking another step in the same direction. Averaging down turned each step into a bigger loss.</p></div></li>
-      <li><div class="b"><h3>Debt-funded buybacks at the top turn a setback into a squeeze.</h3><p>A company that borrows to buy back its own stock at a premium price is betting that nothing changes. If the business then weakens, the debt stays while the shares it bought are worth half.</p><p class="fico">In the June quarter FICO spent $1.96B buying its own stock at an average $1,149, partly with a new $1.5B loan. Debt is now $5.6B, about 3.7x a year of operating profit, with the stock at $617.</p></div></li>
+      <li><div class="b"><h3>Ask who grants the moat.</h3><p>A moat that comes from a rule can be taken away by a rule. Before paying up, ask: if the rule disappeared tomorrow, would customers still choose this product?</p><p class="fico">FICO passes in credit cards and auto loans, where lenders choose it freely. In mortgages, where a rule did the choosing, that is still unproven.</p></div></li>
+      <li><div class="b"><h3>Growth from price has a political ceiling.</h3><p>Check how much growth comes from raising prices versus selling more. If those price increases land on a bill voters already complain about, expect someone in government to notice.</p><p class="fico">Mortgage score prices rose sharply during a national argument about housing affordability. FHFA Director Bill Pulte then criticised FICO's pricing in public, saying FICO "had taken their prices from $4.95 up to $10".</p></div></li>
+      <li><div class="b"><h3>Watch when your distributor owns your rival.</h3><p>If the companies that sell your product also own a competing one, they can switch their effort the moment the rules allow it.</p><p class="fico">The three credit bureaus sell FICO scores and co-own VantageScore. TransUnion added VantageScore free for mortgage customers buying a FICO score, and the share of its mortgage pulls that include VantageScore went from under 5% at the start of 2026 to about 30% in Q2.</p></div></li>
+      <li><div class="b"><h3>A premium multiple doubles the fall.</h3><p>At 40–50x earnings, a stock is priced for years of unchallenged pricing power. When that is questioned, earnings estimates and the multiple drop at the same time.</p><p class="fico">Trailing P/E was above 50x in 2023–25. It is now about 15x on this year's guidance, while revenue was still growing 26%.</p></div></li>
+      <li><div class="b"><h3>Cheap versus its own history is not a floor.</h3><p>Historical multiples describe the old business. Once the business model changes, "lowest in ten years" says little about where the bottom is.</p><p class="fico">In March 2026, about 24x forward earnings was called a 10-year low, with an average target near $2,068 and the stock around $1,100. It has since fallen about another 44%.</p></div></li>
+      <li><div class="b"><h3>A thesis-breaking gap means exit, not add.</h3><p>A big one-day drop caused by the market is noise. A big drop caused by news that breaks the thesis is information. Reduce or exit, and buy back only on new evidence.</p><p class="fico">The 4 Sep and 29 Sep drops were each the regulator taking another step in the same direction. Anyone averaging down after one step took a bigger loss on the next.</p></div></li>
+      <li><div class="b"><h3>Debt-funded buybacks at the top turn a setback into a squeeze.</h3><p>A company that borrows to buy back its own stock at a premium price is betting that nothing changes. If the business then weakens, the debt stays while the shares it bought are worth half.</p><p class="fico">In the June quarter FICO spent $1.96B buying its own stock at an average $1,149, partly with a new $1.5B loan. Debt is now $5.6B, net debt is 3.7x EBITDA, and the stock is at $618.</p></div></li>
     </ol>
   </section>
 
@@ -332,19 +332,19 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
     <p class="col">Run this before adding any "wide moat" name, and again when a position gaps down 15% or more on company news.</p>
     <div class="scroll">
       <table class="tbl">
-        <thead><tr><th>#</th><th>Question</th><th>FICO, mortgage</th></tr></thead>
+        <thead><tr><th>#</th><th>Question</th><th>FICO mortgage, as of 29 Jul</th></tr></thead>
         <tbody>
-          <tr><td>01</td><td>Would customers still choose it if no rule required it?</td><td><span class="flag red">No</span></td></tr>
+          <tr><td>01</td><td>Would customers still choose it if no rule required it?</td><td><span class="flag red">Unproven</span></td></tr>
           <tr><td>02</td><td>Is most recent growth from price rather than volume, on a politically visible bill?</td><td><span class="flag red">Yes</span></td></tr>
           <tr><td>03</td><td>Does a distributor or partner own a competing product?</td><td><span class="flag red">Yes</span></td></tr>
-          <tr><td>04</td><td>Is the multiple well above the market (35x+)?</td><td><span class="flag red">Yes</span></td></tr>
+          <tr><td>04</td><td>Is the multiple well above the market (35x+)?</td><td><span class="flag">Borderline, 32–37x</span></td></tr>
           <tr><td>05</td><td>Has a regulator or politician named the company's pricing in public?</td><td><span class="flag red">Yes</span></td></tr>
-          <tr><td>06</td><td>Is there a written exit rule for a thesis-breaking gap?</td><td><span class="flag red">Rarely</span></td></tr>
+          <tr><td>06</td><td>Is there a written exit rule for a thesis-breaking gap?</td><td><span class="flag">Investor check</span></td></tr>
           <tr><td>07</td><td>Is management borrowing to buy back stock at a premium multiple?</td><td><span class="flag red">Yes</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">Two or more red answers: size smaller, write the exit rule before buying, and track the regulator's calendar as closely as the earnings calendar.</p>
+    <p class="note">Row 04 uses FY26 guidance at the 29 Jul close: about 32x non-GAAP, 37x GAAP. Row 06 is about you, not the company. Two or more red answers: size smaller, write the exit rule before buying, and track the regulator's calendar as closely as the earnings calendar.</p>
   </section>
 
   <section>
@@ -361,9 +361,14 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
   </section>
 
   <section>
+    <div class="eyebrow">Corrections</div>
+    <p class="note col">29 Sep 2026, after first publication: close updated to IBKR's final bar ($617.87, −26.5%); Direct License Program described as announced, not live; the $33 fee quoted in FICO's own words; TransUnion's free offer limited to FICO buyers; the VantageScore figure described as pulls that include it; leverage described as net debt to EBITDA; the ~20-point finding and the MBS point attributed to TD Cowen; the 30 Jul drop no longer attributed to the regulator; stress-test rows 01, 04 and 06 corrected; multiples given with their basis and sources. The scenarios, odds and price ranges are unchanged.</p>
+  </section>
+
+  <section>
     <div class="eyebrow">Sources</div>
     <ul class="sources">
-      <li>Price data: Interactive Brokers daily bars, Apr–Sep 2026.</li>
+      <li>Price data: Interactive Brokers daily bars, Jul–Sep 2026.</li>
       <li><a href="https://finance.yahoo.com/markets/stocks/articles/fico-stock-tumbles-us-moves-212713252.html">FICO stock tumbles as US moves to break mortgage scoring monopoly (Yahoo Finance)</a></li>
       <li><a href="https://wrenews.com/fannie-freddie-single-pricing-grid-vantagescore-fico-2026/">Fannie, Freddie move to one pricing grid with VantageScore (WRE News)</a></li>
       <li><a href="https://www.credittechnologies.com/post/fhfa-opens-vantagescore-4-0-all-lenders-what-changed-september-3">FHFA opens VantageScore 4.0 to all lenders (Credit Technologies)</a></li>
@@ -375,7 +380,8 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
       <li><a href="https://www.investing.com/news/stock-market-news/fico-stock-drops-20-analysts-break-down-the-impact-of-fhfas-single-pricing-grid-4922853">FICO stock drops 20%: analysts on the single pricing grid (Investing.com)</a></li>
       <li><a href="https://www.investing.com/news/company-news/fico-q3-fy2026-slides-platform-arr-milestone-mortgage-growth-surge-93CH-4821998">FICO Q3 FY2026 slides: mortgage growth surge (Investing.com)</a></li>
       <li><a href="https://www.fool.com/earnings/call-transcripts/2026/08/07/fico-fico-q3-2026-earnings-call-transcript/">FICO Q3 2026 earnings call transcript (Motley Fool)</a></li>
-      <li><a href="https://www.top1markets.com/news/fico-stock-vantagescore-regulation-risk-update">FICO stock is down 58% from its high (TOPONE Markets)</a></li>
+      <li><a href="https://www.businesswire.com/news/home/20251001652134/en/FICO-Launches-Cost-Cutting-Direct-License-Program-for-Mortgage-Lending">FICO launches Direct License Program for mortgage lending, 1 Oct 2025 (Business Wire)</a></li>
+      <li><a href="https://fullratio.com/stocks/nyse-fico/pe-ratio">FICO historical P/E ratio (FullRatio)</a></li>
     </ul>
   </section>
 
@@ -385,7 +391,7 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
 <script>
 (function(){
   const closes=[1373.08,1139.54,1122.97,1045.46,1046.99,1091.55,1031.89,1041.4,1049.74,1038.23,1044.21,1110.7,1085.78,1064.41,1078.12,1161.59,1149.75,1172.67,1166.4,1137.14,1133.7,1157.06,1153.57,1147.21,1103.68,1099.45,1118.93,932.26,933.3,983.19,960.67,985.39,1001.5,985.96,991.35,966.3,949.68,924.52,914.48,879.62,856.48,863.09,840.89];
-  const pre=616.8;
+  const pre=617.87;
   const svg=document.getElementById('price');
   const W=760,H=340,L=52,R=24,T=20,B=34;
   const n=closes.length; // last real index n-1, pre-market at n
@@ -421,7 +427,7 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
   el('line',{x1:x(1)+6,y1:y(1300),x2:x(1)+2,y2:y(closes[1])-8,stroke:'var(--loss)','stroke-width':1});
   el('text',{x:x(27)-10,y:y(860),'text-anchor':'end',class:'ann l'},'4 Sep · VantageScore opened −17%');
   el('line',{x1:x(27)-4,y1:y(885),x2:x(27)-1,y2:y(closes[27])+8,stroke:'var(--loss)','stroke-width':1});
-  el('text',{x:x(n)-10,y:y(pre)+4,'text-anchor':'end',class:'ann l'},'29 Sep close $617 −27%');
+  el('text',{x:x(n)-10,y:y(pre)+4,'text-anchor':'end',class:'ann l'},'29 Sep close $618 −26.5%');
 })();
 (function(){
   const rows=[
@@ -452,14 +458,14 @@ footer{padding-block:28px 0;border-top:1px solid var(--rule);font:400 12px/1.6 v
   // bands
   [[250,300,'var(--loss)','Worst $250–300'],[500,600,'var(--accent)','Base $500–600'],[900,1000,'var(--keep)','Best $900–1,000']].forEach(([a,b,c,t])=>{
     el('rect',{x:x(a),y:74,width:x(b)-x(a),height:30,fill:c});
-    const base=a===500; el('text',{x:base?x(617)-8:(x(a)+x(b))/2,y:64,'text-anchor':base?'end':'middle',class:'ann'},t);
+    const base=a===500; el('text',{x:base?x(618)-8:(x(a)+x(b))/2,y:64,'text-anchor':base?'end':'middle',class:'ann'},t);
   });
   // today marker
-  el('line',{x1:x(617),x2:x(617),y1:28,y2:150,stroke:'var(--ink)','stroke-width':2});
-  el('text',{x:x(617)+6,y:24,class:'ann'},'29 Sep close $617');
+  el('line',{x1:x(618),x2:x(618),y1:28,y2:150,stroke:'var(--ink)','stroke-width':2});
+  el('text',{x:x(618)+6,y:24,class:'ann'},'29 Sep close $618');
   // weighted marker
-  el('line',{x1:x(575),x2:x(575),y1:108,y2:150,stroke:'var(--muted)','stroke-width':1.5,'stroke-dasharray':'4 3'});
-  el('text',{x:x(575)-6,y:130,'text-anchor':'end',class:'ax'},'Weighted ≈ $575');
+  el('line',{x1:x(577),x2:x(577),y1:108,y2:150,stroke:'var(--muted)','stroke-width':1.5,'stroke-dasharray':'4 3'});
+  el('text',{x:x(577)-6,y:130,'text-anchor':'end',class:'ax'},'Weighted ≈ $577');
 })();
 </script>
 
